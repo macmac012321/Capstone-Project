@@ -1,0 +1,11 @@
+<h2>Edit Book</h2>
+
+<form method="POST">
+  <input name="title" value="<%= book.title %>" required><br>
+  <input name="author" value="<%= book.author %>"><br>
+  <input name="rating" type="number" value="<%= book.rating %>" min="1" max="5"><br>
+  <input name="cover_id" value="<%= book.cover_id %>"><br>
+  <input name="date_read" type="date" value="<%= book.date_read %>"><br>
+  <textarea name="notes"><%= book.notes %></textarea><br>
+  <button>Update</button>
+</form>

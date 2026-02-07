@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Notes</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>📚 Book Notes Tracker</h1>
+
+<a href="/add">➕ Add Book</a>
+
+<form method="GET">
+  <select name="sort" onchange="this.form.submit()">
+    <option value="created_at">Newest</option>
+    <option value="rating">Rating</option>
+    <option value="title">Title</option>
+  </select>
+</form>
+
+<% books.forEach(book => { %>
+  <div class="card">
+    <% if (book.cover_id) { %>
+      <img src="https://covers.openlibrary.org/b/id/<%= book.cover_id %>-M.jpg">
+    <% } %>
+    <h3><%= book.title %></h3>
+    <p>Author: <%= book.author %></p>
+    <p>Rating: ⭐ <%= book.rating %></p>
+    <p><%= book.notes %></p>
+
+    <a href="/edit/<%= book.id %>">✏️ Edit</a>
+    <form action="/delete/<%= book.id %>" method="POST">
+      <button>🗑 Delete</button>
+    </form>
+  </div>
+<% }) %>
+
+</body>
+</html>
